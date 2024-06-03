@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Candidates Profile</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="static/lib/venobox/venobox.css" rel="stylesheet">
+  <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Main Stylesheet File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">
+          <img src="static/img/Margadarsan_logo_2-.png" alt="logo" width="250px" height="60px">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav nav-menu ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+            <li class="nav-item" class="menu-active"><a class="nav-link" href="#profiles">Profiles</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Admin Login</a></li>
+          </ul>
+      </div>
+  </nav>
+  </header>
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro-candidates">
+    <div class="intro-container-candidates wow fadeIn">
+      <h1 class="mb-4 pb-0">MARGADARSHAN 2024</h1>
+      <h1 class="mb-4 pb-0" style="color: white; font-size: 30px;">an Exclusive Job Mela for <span>Persons with Disabilities</span><br><br>by<br> <span>WinVinaya Foundation</span> in collaboration with <span>NISH</span> </h1>
+      <a href="#profiles" class="about-btn scrollto">Candidates Profiles</a>
+    </div>
+  </section>
+
+  <main id="main">
+
+  <!--==========================
+    Hotels Section
+  ============================-->
+  <section id="profiles" class="section-with-bg wow fadeInUp">
+
+    <div class="container">
+      <div class="section-header">
+        <h2 style="padding-top: 20px;">Candidates Profiles</h2>
+        <p>Here are our Candidates Profiles</p>
+      </div>
+            <!-- Filter Form -->
+            <div class="container mb-4 filter-con">
+              <div class="d-flex justify-content-center">
+                  <form method="GET" action="{{ url_for('candidates_profile') }}">
+                    <div class="form-group col-sm-12">
+                        <label class="bolder-font" for="search">Search</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchInput" name="search" placeholder="Search by name..." value="{{ request.args.get('search', '') }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="form-row align-items-center">
+                          
+                          <div class="form-group col-md-3 col-sm-12">
+                              <label class="bolder-font" for="category">Category</label>
+                              <select class="form-control" id="category" name="category">
+                                  <option value="all">All</option>
+                                  <option value="PWD" {% if request.args.get('category') == 'PWD' %}selected{% endif %}>PWD</option>
+                                  <option value="Non-PWD" {% if request.args.get('category') == 'Non-PWD' %}selected{% endif %}>Non-PWD</option>
+                                  <option value="EWS" {% if request.args.get('category') == 'EWS' %}selected{% endif %}>EWS</option>
+                                  <option value="Women" {% if request.args.get('category') == 'Women' %}selected{% endif %}>Women</option>
+                                  <option value="LGBTQ" {% if request.args.get('category') == 'LGBTQ' %}selected{% endif %}>LGBTQ</option>
+                                  <option value="Retired person" {% if request.args.get('category') == 'Retired person' %}selected{% endif %}>Retired person</option>
+                              </select>
+                          </div>
+                          <div class="form-group col-md-3 col-sm-12">
+                              <label class="bolder-font" for="disability">Disability</label>
+                              <select class="form-control" id="disability" name="disability">
+                                <option value="all" {% if request.args.get('disability') == 'all' %}selected{% endif %}>All</option>
+                                <option value="Blindness" {% if request.args.get('disability') == 'Blindness' %}selected{% endif %}>Blindness</option>
+                                <option value="Low-vision" {% if request.args.get('disability') == 'Low-vision' %}selected{% endif %}>Low-vision</option>
+                                <option value="Leprosy Cured persons" {% if request.args.get('disability') == 'Leprosy Cured persons' %}selected{% endif %}>Leprosy Cured persons</option>
+                                <option value="Hearing Impairment" {% if request.args.get('disability') == 'Hearing Impairment' %}selected{% endif %}>Hearing Impairment</option>
+                                <option value="Locomotor Disability" {% if request.args.get('disability') == 'Locomotor Disability' %}selected{% endif %}>Locomotor Disability</option>
+                                <option value="Dwarfism" {% if request.args.get('disability') == 'Dwarfism' %}selected{% endif %}>Dwarfism</option>
+                                <option value="Intellectual Disability" {% if request.args.get('disability') == 'Intellectual Disability' %}selected{% endif %}>Intellectual Disability</option>
+                                <option value="Mental Illness" {% if request.args.get('disability') == 'Mental Illness' %}selected{% endif %}>Mental Illness</option>
+                                <option value="Autism Spectrum Disorder" {% if request.args.get('disability') == 'Autism Spectrum Disorder' %}selected{% endif %}>Autism Spectrum Disorder</option>
+                                <option value="Cerebral Palsy" {% if request.args.get('disability') == 'Cerebral Palsy' %}selected{% endif %}>Cerebral Palsy</option>
+                                <option value="Muscular Dystrophy" {% if request.args.get('disability') == 'Muscular Dystrophy' %}selected{% endif %}>Muscular Dystrophy</option>
+                                <option value="Chronic Neurological conditions" {% if request.args.get('disability') == 'Chronic Neurological conditions' %}selected{% endif %}>Chronic Neurological conditions</option>
+                                <option value="Specific Learning Disabilities" {% if request.args.get('disability') == 'Specific Learning Disabilities' %}selected{% endif %}>Specific Learning Disabilities</option>
+                                <option value="Multiple Sclerosis" {% if request.args.get('disability') == 'Multiple Sclerosis' %}selected{% endif %}>Multiple Sclerosis</option>
+                                <option value="Speech and Language disability" {% if request.args.get('disability') == 'Speech and Language disability' %}selected{% endif %}>Speech and Language disability</option>
+                                <option value="Thalassemia" {% if request.args.get('disability') == 'Thalassemia' %}selected{% endif %}>Thalassemia</option>
+                                <option value="Hemophilia" {% if request.args.get('disability') == 'Hemophilia' %}selected{% endif %}>Hemophilia</option>
+                                <option value="Sickle Cell disease" {% if request.args.get('disability') == 'Sickle Cell disease' %}selected{% endif %}>Sickle Cell disease</option>
+                                <option value="Multiple Disabilities" {% if request.args.get('disability') == 'Multiple Disabilities' %}selected{% endif %}>Multiple Disabilities</option>
+                                <option value="Acid Attack survivor" {% if request.args.get('disability') == 'Acid Attack survivor' %}selected{% endif %}>Acid Attack survivor</option>
+                                <option value="Parkinson's disease" {% if request.args.get('disability') == "Parkinson's disease" %}selected{% endif %}>Parkinson's disease</option>
+                            </select>
+                            
+                          </div>
+                          <div class="form-group col-md-3 col-sm-12">
+                              <label class="bolder-font" for="domain">Domain</label>
+                              <select class="form-control" id="domain" name="domain">
+                                  <option value="all">All</option>
+                                  <option value="IT" {% if request.args.get('domain') == 'IT' %}selected{% endif %}>IT</option>
+                                  <option value="BFSI" {% if request.args.get('domain') == 'BFSI' %}selected{% endif %}>BFSI</option>
+                                  <option value="MS Office" {% if request.args.get('domain') == 'MS Office' %}selected{% endif %}>MS Office</option>
+                                  <option value="Data Visualization" {% if request.args.get('domain') == 'Data Visualization' %}selected{% endif %}>Data Visualization</option>
+                              </select>
+                          </div>
+                          <div class="form-group col-md-3 col-sm-12">
+                              <label class="bolder-font" for="experience">Experience</label>
+                              <select class="form-control" id="experience" name="experience">
+                                  <option value="all">All</option>
+                                  <option value="0-1 years" {% if request.args.get('experience') == '0-1' %}selected{% endif %}>0-1 year</option>
+                                  <option value="1-3 years" {% if request.args.get('experience') == '1-3' %}selected{% endif %}>1-3 years</option>
+                                  <option value="3-5 years" {% if request.args.get('experience') == '3-5' %}selected{% endif %}>3-5 years</option>
+                                  <option value="5+ years" {% if request.args.get('experience') == '5+' %}selected{% endif %}>5+ years</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-row text-center">
+                          <div class="col-12">
+                              <button class="btn btn-success" type="submit">Filter</button>
+                              <button class="btn btn-danger" type="button" id="resetBtn">Reset</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="row">
+            {% if candidates %}
+            {% for candidate in candidates %}
+            <div class="col-md-4 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="candidate-card">
+                        <img src="static/uploads/image/{{ candidate.photo }}" class="card-img-top" alt="candidate Photo">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ candidate.name }}</h5>
+                            <p class="card-text">Qualification: {{ candidate.highest_qualification }}</p>
+                            <p class="card-text">Domain: {{ candidate.domain }}</p>
+                            <p class="card-text">Experience: {{ candidate.experience }}</p>
+                            <p class="card-text">Skills: {{ candidate.skills | join(', ') }}</p>
+                            <p class="card-text">
+                                <a style="color: blue;" href="#" onclick="loadcandidateDetails('{{ candidate.name }}', '{{ candidate.age }}', '{{ candidate.gender }}', '{{ candidate.phone }}', '{{ candidate.email }}', '{{ candidate.category }}', '{{ candidate.disability_type }}', '{{ candidate.disability_percentage }}', '{{ candidate.highest_qualification }}', '{{ candidate.department }}', '{{ candidate.graduation_year }}', '{{ candidate.domain }}', '{{ candidate.skills | join(', ') }}', '{{ candidate.typing_speed }}', '{{ candidate.quality }}', '{{ candidate.experience }}', '{{ candidate.video }}', '{{ candidate.photo }}', '{{ candidate.resume }}')" data-toggle="modal" data-target="#exampleModal">More info...</a>
+                            </p>
+                            <p class="card-text">
+                                <a style="color: blue;" href="#" data-resume="{{ candidate.resume }}" onclick="downloadResume('{{ candidate.resume }}')"><i class="fas fa-download"></i> Resume</a>
+                            </p>
+                        </div>
+                    </div>
+                    <p style="font-weight: bold;" class="card-text text-wrap">Category: <span style="color: green;">{{ candidate.category }}</span></p>
+                    <p style="font-weight: bold;" class="card-text text-wrap">Disability: <span style="color: green;">{{ candidate.disability_type }}</span></p>
+                    <div class="btn-container">
+                        <button class="btn btn-primary btn-watch-video" data-video-url="{{ candidate.video }}"><i class="fas fa-play"></i> Watch Video</button>
+                        <button class="btn btn-success" data-resume="{{ candidate.pdf }}" onclick="downloadPdf('{{ candidate.pdf }}')"><i class="fas fa-download"></i>Profile</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <p style="text-align: center; color: red; align-items: center;">No results found.</p>
+            {% endif %}
+        </div>
+    </div>
+  </section>
+
+
+  <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Candidate Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="student-details">
+                    <!-- Dynamic details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Modal for Video -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="videoModalLabel">Watch Video</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <!-- Embed the YouTube video using an iframe -->
+                  <iframe id="videoIframe" width="470" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+  </main>
+
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright & Designed by <strong><a href="https://winvinaya.com/" target="_blank">WinVinaya InfoSystems</a></strong>. All Rights Reserved
+        <div class="social-links">
+          <!-- <a href="#" class="twitter"><i class="fa fa-twitter" style="margin-top: 10px; margin-right: 10px;"></i></a> -->
+          <a href="https://www.facebook.com/WinVinaya" class="facebook" target="_blank"><i class="fa fa-facebook" style="margin-right: 10px;"></i></a>
+          <!-- <a href="#" class="instagram"><i class="fa fa-instagram" style="margin-right: 10px;"></i></a> -->
+          <a href="https://youtube.com/@winvinayainfosystems4304?si=WlzfIY6zOpDQRuOD" class="google-plus" target="_blank"><i class="fa fa-youtube" style="margin-right: 10px;"></i></a>
+          <a href="https://www.linkedin.com/company/winvinaya-infosystems" class="linkedin" target="_blank"><i class="fa fa-linkedin" style="margin-right: 10px;"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+  <script>
+    // Function to open the YouTube video modal with the given video URL
+    function openVideoModal(videoUrl) {
+        // Set the src attribute of the iframe to the video URL
+        document.getElementById('videoIframe').src = "/static/uploads/video/" + videoUrl;
+        // Open the video modal
+        $('#videoModal').modal('show');
+    }
+
+    // Add event listeners to all Watch Video buttons
+    var watchVideoButtons = document.querySelectorAll('.btn-watch-video');
+    watchVideoButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Get the YouTube video URL from the dataset attribute
+            var videoUrl = this.dataset.videoUrl;
+            // Open the YouTube video modal with the specified video URL
+            openVideoModal(videoUrl);
+        });
+    });
+  </script>
+
+  <script>
+    function loadcandidateDetails(name, age, gender, phone, email, category, disability, percentage, qualification, department, graduation_year, domain, skills, typing_speed, quality, experience) {
+    var details = `
+        <table class="table-bordered p-5">
+            <tr><th>Name</th><td>${name}</td></tr>
+            <tr><th>Category</th><td>${category}</td></tr>
+            <tr><th>Disability</th><td>${disability}</td></tr>
+            <tr><th>Percentage</th><td>${percentage} %</td></tr>
+            <tr><th>Qualification</th><td>${qualification}</td></tr>
+            <tr><th>Branch</th><td>${department}</td></tr>
+            <tr><th>Graduation Year</th><td>${graduation_year}</td></tr>
+            <tr><th>Domain</th><td>${domain}</td></tr>
+            <tr><th>Typing Speed</th><td>${typing_speed} WPM</td></tr>
+            <tr><th>Quality</th><td>${quality} %</td></tr>
+            <tr><th>Experience</th><td>${experience}</td></tr>
+            <tr><th>Age</th><td>${age}</td></tr>
+            <tr><th>Gender</th><td>${gender}</td></tr>
+            <tr><th>Mobile</th><td>${phone}</td></tr>
+            <tr><th>Email</th><td>${email}</td></tr>
+            <tr><th>skills</th><td>${skills}</td></tr>
+        </table>
+        <table class="table-bordered p-5">
+          
+        </table>
+    `;
+    document.getElementById('student-details').innerHTML = details;
+}
+
+
+    function downloadResume(filename) {
+        console.log('Downloading resume:', filename);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/download_resume/' + filename, true);
+        xhr.responseType = 'blob';
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var url = window.URL.createObjectURL(xhr.response);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                console.log('Resume downloaded successfully:', filename);
+            } else {
+                console.error('Resume download failed:', xhr.status);
+            }
+        };
+
+        xhr.send();
+    }
+    function downloadPdf(filename) {
+        console.log('Downloading pdf:', filename);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/download_pdf/' + filename, true);
+        xhr.responseType = 'blob';
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var url = window.URL.createObjectURL(xhr.response);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                console.log('PDF downloaded successfully:', filename);
+            } else {
+                console.error('PDF download failed:', xhr.status);
+            }
+        };
+
+        xhr.send();
+    }
+
+    document.getElementById('resetBtn').addEventListener('click', function() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('category').value = 'all';
+        document.getElementById('disability').value = 'all';
+        document.getElementById('domain').value = 'all';
+        document.getElementById('experience').value = 'all';
+
+        window.location.href = "{{ url_for('candidates_profile') }}";
+    });
+
+    // document.getElementById('searchInput').addEventListener('input', function() {
+    //     var searchQuery = this.value.trim();
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('GET', '{{ url_for('candidates_profile') }} ?search=' + encodeURIComponent(searchQuery), true);
+    //     xhr.onload = function() {
+    //         if (xhr.status === 200) {
+    //             document.getElementById('student-profiles-container').innerHTML = xhr.responseText;
+    //         } else {
+    //             console.error('Failed to fetch search results:', xhr.status);
+    //         }
+    //     };
+    //     xhr.send();
+    // });
+
+  </script>
+  <!-- JavaScript Libraries -->
+  <script src="static/lib/jquery/jquery.min.js"></script>
+  <script src="static/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/lib/easing/easing.min.js"></script>
+  <script src="static/lib/superfish/hoverIntent.js"></script>
+  <script src="static/lib/superfish/superfish.min.js"></script>
+  <script src="static/lib/wow/wow.min.js"></script>
+  <script src="static/lib/venobox/venobox.min.js"></script>
+  <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="static/contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="static/js/main.js"></script>
+</body>
+
+</html>

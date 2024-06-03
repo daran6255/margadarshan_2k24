@@ -1,0 +1,37 @@
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    color: #6c757d;
+    margin-top: 20px !important;
+}
+.bolder-font {
+    font-weight: bolder;
+    padding: 5px;
+}
+.editbtn{
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.navbar {
+    background-color: #000000;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: #ffffff;
+}
+
+.navbar .nav-link:hover, .navbar .navbar-brand:hover {
+    color: #bbbbbb;
+}
+.nav-tabs .nav-link.active {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.nav-tabs .nav-link {
+    color: #ffffff;
+}
