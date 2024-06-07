@@ -1237,6 +1237,43 @@ body.mobile-nav-active #mobile-nav-toggle {
 #faq {
   padding: 60px 0;
 }
+#faq .nav-tabs {
+  text-align: center;
+  margin: auto;
+  display: block;
+  border-bottom: 0;
+  margin-bottom: 30px;
+}
+
+#faq .nav-tabs li {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#faq .nav-tabs a {
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  background-color: #0e1b4d;
+  color: #fff;
+  padding: 10px 100px;
+}
+
+#faq .nav-tabs a.active {
+  background-color: #f82249;
+  color: #fff;
+}
+
+#faq .sub-heading {
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+  margin: 0 auto 30px auto;
+}
+
+#faq .tab-pane {
+  transition: ease-in-out .2s;
+}
 
 #faq #faq-list {
   padding: 0;
