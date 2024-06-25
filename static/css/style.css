@@ -1036,7 +1036,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #venue .venue-info {
-  background: url("../img/15. Group Photo.JPG") top center no-repeat;
+  background: url("..static/img/gallery/Group_Photo_15.jpg") top center no-repeat;
   background-size: cover;
   position: relative;
   padding-top: 60px;
