@@ -1164,7 +1164,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #gallery .owl-dot {
-  display: inline-grid;
+  display: inline-block;
   margin: 0 5px;
   width: 12px;
   height: 12px;
